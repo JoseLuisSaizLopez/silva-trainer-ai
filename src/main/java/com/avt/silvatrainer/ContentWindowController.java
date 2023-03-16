@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -15,6 +16,8 @@ import javafx.util.Duration;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 public class ContentWindowController {
@@ -31,6 +34,7 @@ public class ContentWindowController {
 
     @FXML
     ScrollPane playgroundScrollPane;
+
 
     @FXML
     protected void initialize() {
@@ -113,6 +117,14 @@ public class ContentWindowController {
             HBox chatMessage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("chat-message.fxml")));
             Label text = (Label) chatMessage.lookup("#messageLabel");
             text.setText(message);
+            //Set time
+            Label messageTimeLabel = (Label) chatMessage.lookup("#playgroundMessageTimeLabel");
+            LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+            String formattedDateTime = now.format(formatter);
+            messageTimeLabel.setText(formattedDateTime);
+
+            //Process message if is sent by the user or by the chat
             if (owner.equals("you")) {
                 chatMessage.lookup("#chatLogoContainer").setVisible(false);
                 chatMessage.lookup("#chatLogoContainer").setManaged(false);
@@ -132,6 +144,25 @@ public class ContentWindowController {
             ft.setFromValue(0.0);
             ft.setToValue(1.0);
             ft.play();
+
+            //Scale and rotate animation
+            ImageView image = (ImageView) chatMessage.lookup("#playgroundLogoImage");
+            // Crea una transición de escala para agrandar la imagen
+            ScaleTransition scaleTransition = new ScaleTransition(Duration.seconds(1), image);
+            scaleTransition.setFromX(0.5);
+            scaleTransition.setFromY(0.5);
+            scaleTransition.setToX(1.0);
+            scaleTransition.setToY(1.0);
+
+            // Crea una transición de rotación para rotar la imagen 360 grados
+            image.setRotate(180);
+            RotateTransition rotateTransition = new RotateTransition(Duration.seconds(1.5), image);
+            rotateTransition.setByAngle(180);
+
+            // Ejecuta ambas transiciones al mismo tiempo
+            scaleTransition.play();
+            rotateTransition.play();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
