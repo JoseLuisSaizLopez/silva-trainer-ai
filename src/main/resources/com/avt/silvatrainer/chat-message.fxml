@@ -2,14 +2,28 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<HBox alignment="CENTER_LEFT" fillHeight="false" maxHeight="-Infinity" maxWidth="500.0" minHeight="-Infinity" minWidth="100.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<HBox fillHeight="false" maxHeight="-Infinity" maxWidth="500.0" minHeight="-Infinity" minWidth="100.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
+      <HBox fx:id="chatLogoContainer" translateX="-5.0" translateY="3.0">
+         <children>
+            <ImageView fitHeight="30.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@datalink_48px.png" />
+               </image>
+            </ImageView>
+         </children>
+         <HBox.margin>
+            <Insets />
+         </HBox.margin>
+      </HBox>
       <VBox fx:id="messagePanel" maxWidth="300.0" style="-fx-background-color: #e0e0e0; -fx-background-radius: 10;">
          <children>
-            <Label fx:id="messageLabel" text="Este es un mensaje de prueba" wrapText="true">
+            <Label fx:id="messageLabel" text="hshfsdiofhsdiufhsdiufdhifhsdiufhsidufhsdiufhsdiufhsdifshfiuashfiusdfhsiufhsdiufhsduhsdifshdfiusdhfEste es un mensaje de prueba" wrapText="true">
             </Label>
          </children>
          <padding>

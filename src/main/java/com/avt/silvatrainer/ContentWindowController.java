@@ -1,8 +1,6 @@
 package com.avt.silvatrainer;
 
-import javafx.animation.FadeTransition;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
+import javafx.animation.*;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -116,14 +114,20 @@ public class ContentWindowController {
             Label text = (Label) chatMessage.lookup("#messageLabel");
             text.setText(message);
             if (owner.equals("you")) {
+                chatMessage.lookup("#chatLogoContainer").setVisible(false);
+                chatMessage.lookup("#chatLogoContainer").setManaged(false);
                 chatMessage.setAlignment(Pos.CENTER_RIGHT);
             } else {
                 VBox messagePanel = (VBox) chatMessage.lookup("#messagePanel");
                 messagePanel.setStyle("-fx-background-color: #2271B3; -fx-background-radius: 10;");
                 text.setStyle("-fx-text-fill: white;");
+                //Typing animation
+                animateText(text, message);
             }
             //Append message to chat
             playgroundChatPanel.getChildren().add(chatMessage);
+
+            //Fade aimation
             FadeTransition ft = new FadeTransition(Duration.millis(2000), chatMessage);
             ft.setFromValue(0.0);
             ft.setToValue(1.0);
@@ -133,5 +137,20 @@ public class ContentWindowController {
         }
 
     }
+
+    public void animateText(Label label, String text) {
+        final Animation animation = new Transition() {
+            {
+                setCycleDuration(Duration.millis(1000));
+            }
+            protected void interpolate(double frac) {
+                final int length = text.length();
+                final int n = Math.round(length * (float) frac);
+                label.setText(text.substring(0, n));
+            }
+        };
+        animation.play();
+    }
+
 
 }
