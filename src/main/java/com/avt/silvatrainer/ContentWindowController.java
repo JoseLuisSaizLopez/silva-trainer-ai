@@ -61,7 +61,14 @@ public class ContentWindowController {
         //Process response
         String pythonScriptPath = "src/main/python/silva/core/silva.py";
         String[] cmd = new String[4];
-        cmd[0] = "src/main/python/silva/core/.venv/Scripts/python.exe";
+        String osName = System.getProperty("os.name").toLowerCase();
+        if (osName.contains("windows")) {
+            // Código específico para Windows
+            cmd[0] = "src/main/python/silva/core/.venv/Scripts/python.exe";
+        } else {
+            // Código específico para Linux
+            cmd[0] = "src/main/python/silva/core/.venv/bin/python3";
+        }
         cmd[1] = pythonScriptPath;
         cmd[2] = "-p";
         cmd[3] = "\""+playgroundPromptField.getText()+"\"";
