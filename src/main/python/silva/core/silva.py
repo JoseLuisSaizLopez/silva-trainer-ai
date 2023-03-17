@@ -18,10 +18,11 @@ def get_datamodel():
 
 
 def train_model(sentence, label):
+
     model = get_datamodel()
-    model = train_datamodel_sigle_sentence(model, sentence, label)
-    dump(model, MODEL_FILE)
-    print("modelo guardado")
+    #model = train_datamodel_sigle_sentence(model, sentence, label)
+    #dump(model, MODEL_FILE)
+    print("model saved")
 
 
 def model_predict(sentence):
@@ -33,19 +34,19 @@ def model_predict(sentence):
 '''
 if __name__ == "__main__":
     # Obtener el primer argumento pasado desde la línea de comandos
-    try:
-        command = sys.argv[1]
+    #try:
+    command = sys.argv[1]
 
-        # Llamar al entrenador
-        if (command == "-trainer" or command == "-t"):
-            sentence = sys.argv[2]
-            label = sys.argv[3]
-            train_model(sentence, label)
+    # Llamar al entrenador
+    if (command == "-trainer" or command == "-t"):
+        sentence = sys.argv[2]
+        label = sys.argv[3]
+        train_model(sentence, label)
 
-        # Llamar al predictor
-        if (command == "-predict" or command == "-p"):
-            sentence = sys.argv[2]
-            model_predict(sentence)
+    # Llamar al predictor
+    if (command == "-predict" or command == "-p"):
+        sentence = sys.argv[2]
+        model_predict(sentence)
 
-    except IndexError:
-        print("Not all arguments are introduced")
+   #except IndexError:
+   #    print("Not all arguments are introduced")

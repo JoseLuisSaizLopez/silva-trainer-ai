@@ -2,13 +2,14 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox fillHeight="false" maxHeight="-Infinity" maxWidth="500.0" minHeight="-Infinity" minWidth="100.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<HBox fillHeight="false" maxHeight="-Infinity" maxWidth="500.0" minHeight="-Infinity" minWidth="100.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox maxWidth="1.7976931348623157E308">
          <children>
@@ -20,12 +21,15 @@
                            <image>
                               <Image url="@datalink_48px.png" />
                            </image>
+                           <effect>
+                              <ColorAdjust brightness="0.13" />
+                           </effect>
                         </ImageView>
                      </children>
                   </HBox>
-                  <VBox fx:id="messagePanel" maxWidth="300.0" style="-fx-background-color: #e0e0e0; -fx-background-radius: 10;">
+                  <VBox fx:id="messagePanel" maxWidth="300.0" style="-fx-background-color: #606060; -fx-background-radius: 10;">
                      <children>
-                        <Label fx:id="messageLabel" text="Este es un mensaje de prueba" wrapText="true">
+                        <Label fx:id="messageLabel" text="Este es un mensaje de prueba" textFill="#dddddd" wrapText="true">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -39,7 +43,7 @@
             </HBox>
             <HBox alignment="TOP_RIGHT" maxWidth="300.0" minWidth="0.0">
                <children>
-                  <Label fx:id="playgroundMessageTimeLabel" minWidth="0.0" text="16:09" textFill="#bcbcbc">
+                  <Label fx:id="playgroundMessageTimeLabel" minWidth="0.0" opacity="0.33" text="16:09" textFill="#bcbcbc">
                      <HBox.margin>
                         <Insets right="3.0" />
                      </HBox.margin>

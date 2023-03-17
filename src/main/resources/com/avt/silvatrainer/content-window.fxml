@@ -8,11 +8,15 @@
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="540.0" prefWidth="715.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.avt.silvatrainer.ContentWindowController">
   <columnConstraints>
@@ -22,7 +26,7 @@
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
   </rowConstraints>
    <children>
-      <GridPane fx:id="container" maxWidth="1000.0" style="-fx-background-color: #e0e0e0; -fx-background-radius: 20;" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+      <GridPane fx:id="container" maxWidth="1000.0" style="-fx-background-color: #1A1D21; -fx-background-radius: 20;" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
@@ -32,65 +36,11 @@
          <children>
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+                  <TabPane prefHeight="200.0" prefWidth="200.0" stylesheets="@style.css" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
                     <tabs>
-                      <Tab text="Training">
+                      <Tab style="-fx-border-insets: 0; -fx-background-radius: 10 10 0 0;" text="Training">
                            <content>
                            </content>
-                           <content>
-                              <GridPane>
-                                <columnConstraints>
-                                  <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="100.0" />
-                                </columnConstraints>
-                                <rowConstraints>
-                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
-                                </rowConstraints>
-                                 <children>
-                                    <VBox prefHeight="200.0" prefWidth="100.0">
-                                       <children>
-                                          <ScrollPane fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
-                                             <content>
-                                                <VBox prefHeight="200.0" prefWidth="100.0" />
-                                             </content>
-                                          </ScrollPane>
-                                          <HBox alignment="CENTER_LEFT" prefHeight="44.0" prefWidth="675.0" style="-fx-background-color: white;">
-                                             <VBox.margin>
-                                                <Insets bottom="30.0" />
-                                             </VBox.margin>
-                                             <children>
-                                                <Label text="Prompt :" />
-                                                <TextField HBox.hgrow="ALWAYS">
-                                                   <HBox.margin>
-                                                      <Insets left="4.0" />
-                                                   </HBox.margin>
-                                                </TextField>
-                                                <Label text="ODS objective :">
-                                                   <HBox.margin>
-                                                      <Insets left="15.0" />
-                                                   </HBox.margin>
-                                                </Label>
-                                                <ChoiceBox fx:id="odsChoiceBox" prefWidth="150.0">
-                                                   <HBox.margin>
-                                                      <Insets left="5.0" />
-                                                   </HBox.margin>
-                                                </ChoiceBox>
-                                                <Button fx:id="trainingSendButton" mnemonicParsing="false" text="Send">
-                                                   <HBox.margin>
-                                                      <Insets left="15.0" />
-                                                   </HBox.margin>
-                                                </Button>
-                                             </children>
-                                             <padding>
-                                                <Insets left="20.0" right="20.0" />
-                                             </padding>
-                                          </HBox>
-                                       </children>
-                                    </VBox>
-                                 </children>
-                              </GridPane>
-                           </content>
-                      </Tab>
-                      <Tab text="Playground">
                            <content>
                               <GridPane>
                                  <columnConstraints>
@@ -102,30 +52,190 @@
                                  <children>
                                     <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
                                        <children>
-                                          <ScrollPane fx:id="playgroundScrollPane" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" pannable="true" VBox.vgrow="ALWAYS">
+                                          <HBox maxWidth="1.7976931348623157E308" prefHeight="20.0" prefWidth="200.0" style="-fx-background-color: #363A3D; -fx-background-radius: 20 20 0 0; -fx-background-insets: -1;">
+                                             <VBox.margin>
+                                                <Insets left="2.0" right="2.0" />
+                                             </VBox.margin>
+                                          </HBox>
+                                          <ScrollPane fx:id="trainingScrollPane" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" pannable="true" style="-fx-background-insets: 1;" stylesheets="@style.css" VBox.vgrow="ALWAYS">
                                              <content>
-                                                <VBox fx:id="playgroundChatPanel" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" />
+                                                <VBox fx:id="trainingChatPanel" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+                                                   <padding>
+                                                      <Insets top="20.0" />
+                                                   </padding>
+                                                </VBox>
                                              </content>
                                           </ScrollPane>
-                                          <HBox alignment="CENTER" maxWidth="700.0" prefHeight="44.0" prefWidth="675.0" style="-fx-background-color: white; -fx-background-radius: 20;">
+                                          <HBox maxWidth="1.7976931348623157E308" prefHeight="20.0" prefWidth="200.0" style="-fx-background-color: #363A3D; -fx-background-radius: 0 0 20 20; -fx-background-insets: -1;">
                                              <VBox.margin>
-                                                <Insets bottom="30.0" left="10.0" right="10.0" top="10.0" />
+                                                <Insets left="2.0" right="2.0" />
+                                             </VBox.margin>
+                                          </HBox>
+                                          <HBox alignment="CENTER" maxWidth="700.0" prefHeight="104.0" prefWidth="635.0" style="-fx-background-color: #5A6065; -fx-background-radius: 20;">
+                                             <VBox.margin>
+                                                <Insets bottom="30.0" left="20.0" right="20.0" top="15.0" />
                                              </VBox.margin>
                                              <children>
-                                                <Label text="Prompt :" />
-                                                <TextField fx:id="playgroundPromptField" promptText="Write a message here to detect the ODS rule" HBox.hgrow="ALWAYS">
+                                                <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <HBox prefWidth="610.0">
+                                                         <children>
+                                                            <TextField fx:id="trainingPromptField" prefHeight="36.0" prefWidth="340.0" promptText="Message to be processed" style="-fx-background-radius: 20; -fx-background-color: #6A7074; -fx-text-fill: #f0f0f0;" HBox.hgrow="ALWAYS">
+                                                               <font>
+                                                                  <Font size="14.0" />
+                                                               </font>
+                                                            </TextField>
+                                                            <Button fx:id="trainingSendButton" mnemonicParsing="false" prefHeight="33.0" prefWidth="32.0" style="-fx-background-color: #5577ff; -fx-background-radius: 60;" styleClass="button-send" stylesheets="@style.css">
+                                                               <HBox.margin>
+                                                                  <Insets left="15.0" />
+                                                               </HBox.margin>
+                                                               <graphic>
+                                                                  <ImageView fitHeight="30.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                                                     <image>
+                                                                        <Image url="@ic_training.png" />
+                                                                     </image>
+                                                                     <effect>
+                                                                        <ColorAdjust brightness="1.0" contrast="1.0" saturation="-1.0" />
+                                                                     </effect>
+                                                                  </ImageView>
+                                                               </graphic>
+                                                            </Button>
+                                                         </children>
+                                                         <VBox.margin>
+                                                            <Insets left="5.0" top="5.0" />
+                                                         </VBox.margin>
+                                                         <padding>
+                                                            <Insets bottom="10.0" />
+                                                         </padding>
+                                                      </HBox>
+                                                      <HBox fillHeight="false" prefHeight="39.0" prefWidth="615.0">
+                                                         <children>
+                                                            <HBox alignment="CENTER_LEFT" prefHeight="40.0" style="-fx-background-color: #6A7074; -fx-background-radius: 20;">
+                                                               <children>
+                                                                  <Label text="ODS objective :" textFill="#b5b5b5">
+                                                                     <font>
+                                                                        <Font size="14.0" />
+                                                                     </font>
+                                                                     <HBox.margin>
+                                                                        <Insets left="10.0" />
+                                                                     </HBox.margin>
+                                                                  </Label>
+                                                                  <ChoiceBox fx:id="odsChoiceBox" maxWidth="1.7976931348623157E308" prefHeight="34.0" prefWidth="213.0" style="-fx-background-color: #6A7074; -fx-background-radius: 20;" stylesheets="@style.css">
+                                                                     <HBox.margin>
+                                                                        <Insets />
+                                                                     </HBox.margin>
+                                                                  </ChoiceBox>
+                                                               </children>
+                                                               <HBox.margin>
+                                                                  <Insets left="5.0" />
+                                                               </HBox.margin>
+                                                               <padding>
+                                                                  <Insets right="5.0" />
+                                                               </padding>
+                                                            </HBox>
+                                                            <HBox alignment="CENTER_LEFT" prefHeight="40.0" style="-fx-background-color: #6A7074; -fx-background-radius: 20;" HBox.hgrow="ALWAYS">
+                                                               <children>
+                                                                  <Label text="Goal :" textFill="#b5b5b5">
+                                                                     <font>
+                                                                        <Font size="14.0" />
+                                                                     </font>
+                                                                     <HBox.margin>
+                                                                        <Insets left="10.0" />
+                                                                     </HBox.margin>
+                                                                  </Label>
+                                                                  <ChoiceBox fx:id="goalChoiceBox" maxWidth="1.7976931348623157E308" prefHeight="34.0" prefWidth="213.0" style="-fx-background-color: #6A7074; -fx-background-radius: 20;" stylesheets="@style.css" HBox.hgrow="ALWAYS">
+                                                                     <HBox.margin>
+                                                                        <Insets />
+                                                                     </HBox.margin>
+                                                                  </ChoiceBox>
+                                                               </children>
+                                                               <padding>
+                                                                  <Insets right="5.0" />
+                                                               </padding>
+                                                               <HBox.margin>
+                                                                  <Insets left="10.0" />
+                                                               </HBox.margin>
+                                                            </HBox>
+                                                         </children>
+                                                         <VBox.margin>
+                                                            <Insets bottom="10.0" />
+                                                         </VBox.margin>
+                                                      </HBox>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                             <padding>
+                                                <Insets right="20.0" />
+                                             </padding>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </GridPane>
+                           </content>
+                      </Tab>
+                      <Tab style="-fx-border-insets: 0; -fx-background-radius: 10 10 0 0;" text="Playground">
+                           <content>
+                              <GridPane>
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="100.0" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+                                 </rowConstraints>
+                                 <children>
+                                    <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+                                       <children>
+                                          <HBox maxWidth="1.7976931348623157E308" prefHeight="20.0" prefWidth="200.0" style="-fx-background-color: #363A3D; -fx-background-radius: 20 20 0 0; -fx-background-insets: -1;">
+                                             <VBox.margin>
+                                                <Insets left="2.0" right="2.0" />
+                                             </VBox.margin>
+                                          </HBox>
+                                          <ScrollPane fx:id="playgroundScrollPane" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" pannable="true" style="-fx-background-insets: 1;" stylesheets="@style.css" VBox.vgrow="ALWAYS">
+                                             <content>
+                                                <VBox fx:id="playgroundChatPanel" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+                                                   <padding>
+                                                      <Insets top="20.0" />
+                                                   </padding>
+                                                </VBox>
+                                             </content>
+                                          </ScrollPane>
+                                          <HBox maxWidth="1.7976931348623157E308" prefHeight="20.0" prefWidth="200.0" style="-fx-background-color: #363A3D; -fx-background-radius: 0 0 20 20; -fx-background-insets: -1;">
+                                             <VBox.margin>
+                                                <Insets left="2.0" right="2.0" />
+                                             </VBox.margin>
+                                          </HBox>
+                                          <HBox alignment="CENTER" maxWidth="700.0" prefHeight="44.0" prefWidth="675.0" style="-fx-background-color: #5A6065; -fx-background-radius: 20;">
+                                             <VBox.margin>
+                                                <Insets bottom="30.0" left="20.0" right="20.0" top="15.0" />
+                                             </VBox.margin>
+                                             <children>
+                                                <TextField fx:id="playgroundPromptField" prefHeight="36.0" prefWidth="565.0" promptText="Write a message here to detect the ODS rule" style="-fx-background-radius: 20; -fx-background-color: #6A7074; -fx-text-fill: #f0f0f0;" HBox.hgrow="ALWAYS">
                                                    <HBox.margin>
                                                       <Insets left="4.0" />
                                                    </HBox.margin>
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
                                                 </TextField>
-                                                <Button fx:id="playgroundSendButton" mnemonicParsing="false" text="Send">
+                                                <Button fx:id="playgroundSendButton" mnemonicParsing="false" prefHeight="33.0" prefWidth="32.0" style="-fx-background-color: #5577ff; -fx-background-radius: 60;" styleClass="button-send" stylesheets="@style.css">
                                                    <HBox.margin>
                                                       <Insets left="15.0" />
                                                    </HBox.margin>
+                                                   <graphic>
+                                                      <ImageView fitHeight="30.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@ic_send.png" />
+                                                         </image>
+                                                         <effect>
+                                                            <ColorAdjust brightness="1.0" contrast="1.0" saturation="-1.0" />
+                                                         </effect>
+                                                      </ImageView>
+                                                   </graphic>
                                                 </Button>
                                              </children>
                                              <padding>
-                                                <Insets left="20.0" right="20.0" />
+                                                <Insets right="20.0" />
                                              </padding>
                                           </HBox>
                                        </children>

@@ -1,6 +1,19 @@
+import csv
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.pipeline import Pipeline
+
+def get_trainig_data(file_path):
+    training_data = []
+    with open(file_path, newline='', encoding='utf-8') as csvfile:
+        csvreader = csv.reader(csvfile, delimiter=';', quotechar='"')
+        for row in csvreader:
+            if len(row) >= 2:
+                training_data.append((row[0], row[1]))
+            else:
+                print(f"La fila {row} no tiene suficientes columnas.")
+    return training_data
+
 
 def create_default_datamodel():
     # Ejemplo de uso:
@@ -12,6 +25,8 @@ def create_default_datamodel():
         ("Solo compramos la comida necesaria para no malgastar", "hambre cero"),
         ("Hacemos donaciones de bebidas y alimentos a varias ONG", "hambre cero"),
     ]
+
+    training_data = get_trainig_data("t_model_ods.csv")
 
     #Creamos el modelo de datos
     model = Pipeline([

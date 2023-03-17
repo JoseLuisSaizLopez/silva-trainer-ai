@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="715.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.avt.silvatrainer.AppController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="715.0" style="-fx-background-color: #1A1D21;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.avt.silvatrainer.AppController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
   </columnConstraints>
@@ -17,7 +17,7 @@
     <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #237593;">
+      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #237593; -fx-background-radius: 0 0 10 10;">
          <children>
             <Label text="S.I.L.V.A" textFill="WHITE" />
             <Label text=" Control Panel" textFill="#c3c3c3" />
@@ -26,7 +26,7 @@
             <Insets left="20.0" right="20.0" />
          </padding>
       </HBox>
-      <GridPane fx:id="container" GridPane.rowIndex="1">
+      <GridPane fx:id="container" style="-fx-background-color: #1A1D21;" GridPane.rowIndex="1">
         <columnConstraints>
           <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="0.0" />
         </columnConstraints>
