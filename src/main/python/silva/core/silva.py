@@ -1,6 +1,6 @@
 import os;
 import sys;
-from trainer import create_default_datamodel, train_datamodel_sigle_sentence;
+from trainer import add_single_training_to_datamodel, create_default_datamodel, train_datamodel, train_datamodel_sigle_sentence;
 from joblib import dump, load;
 
 MODEL_FILE = 's1lv4_model_one.joblib'
@@ -18,10 +18,10 @@ def get_datamodel():
 
 
 def train_model(sentence, label):
-
     model = get_datamodel()
-    #model = train_datamodel_sigle_sentence(model, sentence, label)
-    #dump(model, MODEL_FILE)
+    training_data = add_single_training_to_datamodel(sentence, label, "t_model_ods.csv")
+    model = train_datamodel(training_data)
+    dump(model, MODEL_FILE)
     print("model saved")
 
 
